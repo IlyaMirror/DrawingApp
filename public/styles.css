@@ -1,0 +1,141 @@
+body {
+  background-color: #E0FFFF;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  background-color: #FF7F50;
+  color: #FFFFFF;
+  width: 100%; /* Растягиваем header и footer на всю ширину */
+}
+
+header .container {
+  width: 98%;
+  max-width: 100%; /* Добавим максимальную ширину для случаев, когда содержимое будет слишком узким */
+}
+
+.btn img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+
+
+.custom-range::-moz-range-thumb {
+  background: #17a2b8;
+}
+
+.custom-range{
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+
+.sidebar, .layers-panel {
+  border: 3px solid #ffb89f;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.container-fluid {
+  display: flex;
+}
+
+.sidebar {
+  margin: 10px;
+  background-color: #FF7F50;
+  height: 75vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.canvas-container {
+  border: 3px solid #ffb89f;
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: #E0FFFF;
+  height: 75vh; /* Высота 1/10 от высоты страницы */
+  position: relative; /* Добавлено для позиционирования дочерних элементов */
+}
+
+.canvas-container canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+
+.layers-panel {
+  flex: 1;
+  margin-top: 20px; /* Размещаем внизу контейнера */
+  background-color: #ffffff;
+  padding: 10px;
+
+}
+
+.brushes {
+  margin-bottom: 20px;
+}
+
+.fa-paint-brush, .fa-eraser {
+  font-size: 24px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px; /* Внутренний отступ */
+}
+
+.footer {
+  background-color: #FF7F50;
+  color: #FFFFFF;
+  padding: 10px 0;
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+#canvas {
+  background-color: white;
+  border: 3px solid #eeeeee;
+  border-radius: 10px;
+  max-width: 100%; /* Максимальная ширина не превышает размеры родительского контейнера */
+  max-height: 100%;
+}
+
+.brush-tools {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Два столбца равной ширины */
+  grid-gap: 10px; /* Отступ между кнопками */
+  padding-top: 10px;
+}
+
+.undo-redo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Два столбца равной ширины */
+  grid-gap: 10px; /* Отступ между кнопками */
+  padding-top: 10px;
+}
+
+.color-pick {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px; /* Отступ между кружками */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #ffb89f; /* Цвет и толщина обводки */
+  border-radius: 50%; /* Делаем круглые */
+  cursor: pointer; /* Изменяем вид курсора при наведении */
+}
