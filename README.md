@@ -1,4 +1,4 @@
-# Web-приложение для рисования
+# Web-приложение для рисования "OransjeTegning"
 
 ![DrawingApp Screenshot](Screenshot.png)
 
