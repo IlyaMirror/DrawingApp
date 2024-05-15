@@ -1,4 +1,4 @@
-# DrawingApp
+# Web-приложение для рисования
 
 ![DrawingApp Screenshot](Screenshot.png)
 
