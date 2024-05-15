@@ -1,6 +1,6 @@
 # DrawingApp
 
-![DrawingApp Screenshot](screenshot.png)
+![DrawingApp Screenshot](Screenshot.png)
 
 Приложение для рисования, выполненное на HTML, CSS и JS.
 
