@@ -1,141 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
-  background-color: #E0FFFF;
+  background: #E0FFFF;
+  color: #17a2b8;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.row{
+  margin-bottom: 20px;
+}
+
+header {
+  background-color: #17a2b8;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  height: 30px;
+  margin-right: 10px;
 }
 
 footer {
   background-color: #FF7F50;
   color: #FFFFFF;
-  width: 100%; /* Растягиваем header и footer на всю ширину */
+  padding: 10px 0;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
 }
 
-header .container {
-  width: 98%;
-  max-width: 100%; /* Добавим максимальную ширину для случаев, когда содержимое будет слишком узким */
-}
-
-.btn img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-}
-
-
-
-.custom-range::-moz-range-thumb {
-  background: #17a2b8;
-}
-
-.custom-range{
-  padding-top: 25px;
-  padding-bottom: 10px;
-}
-
-
-.sidebar, .layers-panel {
-  border: 3px solid #ffb89f;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.container-fluid {
-  display: flex;
-}
-
-.sidebar {
-  margin: 10px;
-  background-color: #FF7F50;
-  height: 75vh; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-}
-
-.canvas-container {
-  border: 3px solid #ffb89f;
-  border-radius: 10px;
-  flex: 1;
+.paint-zone {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
-  background-color: #E0FFFF;
-  height: 75vh; /* Высота 1/10 от высоты страницы */
-  position: relative; /* Добавлено для позиционирования дочерних элементов */
-}
-
-.canvas-container canvas {
-  width: 100%;
   height: 100%;
+  padding-bottom: 20hv;
+}
+
+.canvas-zone {
+  min-height: 80vh;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  min-width: 98vw;
+}
+
+.drawing-board {
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid #17a2b8;
   border-radius: 10px;
+  width: 100%;
+  height: 70vh;
+  overflow: scroll;
+}
+
+canvas {
+  border: 3px solid #e7e7e7;
+  overflow: auto;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.tools-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #ff7542;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  color: #000;
+  border: 3px solid #ffb89f;
+  width: 230px;
+  margin-right: 20px;
+}
+
+.options .option img {
+  width: 16px;
+  height: 16px;
 }
 
 
-.layers-panel {
-  flex: 1;
-  margin-top: 20px; /* Размещаем внизу контейнера */
-  background-color: #ffffff;
+
+@media(max-width: 830px) {
+  .tools-section{
+    grid-template-columns: 1fr;
+  }
+}
+@media(max-width: 555px) {
+  .container{
+    grid-template-columns: 1fr;
+  }
+  .drawing-board{
+    width: 100%;
+  }
+}
+
+.options {
+  list-style: none;
+  margin: 10px 0 0 0px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.options .option {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.option:is(:hover,.active) img {
+  filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+
+.option :where(span,label) {
+  color: #5a6168;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.option:is(:hover,.active) :where(span,label) {
+  color: #4a98f7;
+}
+
+.option #fill-color {
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+}
+
+#fill-color:checked ~label {
+  color: #4a98f7;
+}
+
+.option #size-slider {
+  width: 100%;
+  height: 5px;
+  margin-top: 10px;
+}
+
+.btn {
+  background-color: #1bbdd6;
+  color: #000;
+  border: 3px solid #17a2b8;
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.clean-col {
+  background-color: #d61b1b;
+  color: #000;
+  border: 3px solid #b81717;
+}
+
+.action-buttons .btn img {
+  max-height: 100%; 
+  max-width: 100%; 
+}
+
+.btn:hover {
+  background-color: #66c3d1;
+  border: 3px solid #59a9b6;
+}
+
+.clean-col:hover  {
+  background-color: #d16262;
+  border: 3px solid #be5959;
+}
+
+.action-buttons {
+  background: #ff7542;
+  border: 3px solid #ffb89f;
+  border-radius: 10px;
   padding: 10px;
-
+  display: flex;
+  margin-top: 20px;
+  width: 400px; /* Вернули ширину 400px */
 }
 
-.brushes {
-  margin-bottom: 20px;
+.action-buttons button {
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+  margin: 5px;
 }
 
-.fa-paint-brush, .fa-eraser {
-  font-size: 24px;
+.colors .options {
+  display: flex;
+  justify-content: space-between;
 }
 
-.content {
-  flex: 1;
-  padding: 20px; /* Внутренний отступ */
+.colors .option {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-top: 3px;
+  position: relative;
 }
 
-.footer {
-  background-color: #FF7F50;
-  color: #FFFFFF;
-  padding: 10px 0;
-  text-align: center; /* Выравнивание текста по центру */
+.colors .option:nth-child(1) {
+  background-color: #ffffff;
+  border: 1px solid #e0ffff;
+  margin: 5px;
 }
 
-#canvas {
-  background-color: white;
-  border: 3px solid #eeeeee;
-  border-radius: 10px;
-  max-width: 100%; /* Максимальная ширина не превышает размеры родительского контейнера */
-  max-height: 100%;
+.colors .option:nth-child(2) {
+  background-color: #000000;
+  margin: 5px;
 }
 
-.brush-tools {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Два столбца равной ширины */
-  grid-gap: 10px; /* Отступ между кнопками */
-  padding-top: 10px;
+.colors .option:nth-child(3) {
+  background-color: #ff0000;
+  margin: 5px;
 }
 
-.undo-redo {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Два столбца равной ширины */
-  grid-gap: 10px; /* Отступ между кнопками */
-  padding-top: 10px;
+.colors .option:nth-child(4) {
+  background-color: #00ff22;
+  margin: 5px;
 }
 
-.color-pick {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px; /* Отступ между кружками */
-  padding-top: 10px;
-  padding-bottom: 10px;
+.colors .option:nth-child(5) {
+  background-color: #17a2b8;
+  margin: 5px;
 }
 
-.color-circle {
-  width: 30px;
-  height: 30px;
-  border: 3px solid #ffb89f; /* Цвет и толщина обводки */
-  border-radius: 50%; /* Делаем круглые */
-  cursor: pointer; /* Изменяем вид курсора при наведении */
+.colors .option.selected::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  height: 12px;
+  width: 12px;
+  background: inherit;
+  border-radius: inherit;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+}
+
+.colors .option:first-child.selcted::before {
+  background-color: #ccc;
+}
+
+.option #color-picker {
+  opacity: 0;
+  cursor: pointer;
 }

@@ -1,111 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Drawing App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OransjeTegning</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <link rel="icon" href="/resources/logo.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container">
-            <!-- Логотип и название -->
-            <a class="navbar-brand" href="#">
-                <img src="resources/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                OransjeTegning
-            </a>
-            <!-- Кнопка с тремя полосками -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Ссылки на действия -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto"> <!-- Изменение mr-auto на ml-auto для выравнивания пунктов меню справа -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="saveAsPNG">Сохранить как PNG</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="saveAsJPG">Сохранить как JPG</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="newFile">Новый файл</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+
+  <header>
+    <img src="/resources/logo.png" alt="Logo">
+    <h1>OransjeTegning</h1>
+  </header>
+  
+  <div class="paint-zone">
+  <div class="container">
     
+    <div class="tools-section ">
+      <div class="row ">
+        <label class="title">Инструменты</label>
+        <ul class="options">
+          <li class="option active tool" id="brush">
+            <img src="/resources/brush.svg" alt="">
+            <span>Кисть</span>
+          </li>
+          <li class="option tool" id="eraser">
+            <img src="/resources/eraser.svg" alt="">
+            <span>Ластик</span>
+          </li>
+          <li class="option">
+            <input type="range" id="size-slider" min="1" max="30" value="5">
+          </li>
+        </ul>
+      </div>
     
-
-    <div class="content">
-        <div class="container-fluid">
-            <!-- Sidebar with brushes and colors -->
-            <div class="sidebar">
-
-                <div class="working-place">
-                <div>
-                    <!-- Color picker -->
-                    <input type="color" id="colorPicker" class="form-control" value="#000000">
-                    <!-- Brush size -->
-                    <input type="range" id="brushSize" class="custom-range" min="1" max="50" value="10">
-                </div>
-
-                <div class="brush-tools">
-                    
-                    <!-- Кнопки с картинками -->
-                    <button class="btn btn-info form-control brush-tool">
-                        <img src="/resources/pencil.png" alt="Кисть">
-                    </button>
-                    <button class="btn btn-info form-control brush-tool">
-                        <img src="/resources/eraser.png" alt="Ластик">
-                    </button>
-                    <button class="btn btn-info form-control brush-tool">
-                        <img src="/resources/dry-clean.png" alt="Круг">
-                    </button>
-                    <button class="btn btn-info form-control brush-tool">
-                        <img src="/resources/square.png" alt="Прямоугольник">
-                    </button>
-                    <button class="btn btn-info form-control brush-tool">
-                        <img src="/resources/bleach.png" alt="Треугольник">
-                    </button>
-                    
-                </div>
-                </div>
-
-                <div class="undo-redo">
-                    <button class="btn btn-info form-control brush-tool" id="undoButton">
-                        <img src="/resources/next2.png" alt="Отменить">
-                    </button>
-                    <button class="btn btn-info form-control brush-tool" id="redoButton">
-                        <img src="/resources/next.png" alt="Повторить">
-                    </button>
-                    <button class="btn btn-danger form-control clear-canvas">
-                        <img src="/resources/close.png" alt="Очистить">
-                    </button>
-                </div>
-
-            </div>
-            
-
-            <!-- Canvas area -->
-            <div class="canvas-container" id="canvasContainer">
-                <canvas id="canvas"></canvas>
-            </div>
-        </div>
+    <div class="row ">
+      <label class="title">Фигуры</label>
+      <ul class="options">
+        <li class="option tool" id="rectangle">
+          <img src="/resources/rectangle.svg" alt="">
+          <span>Прямоугольник</span>
+        </li>
+        <li class="option tool" id="circle">
+          <img src="/resources/circle.svg" alt="">
+          <span>Круг</span>
+        </li>
+        <li class="option tool" id="triangle">
+          <img src="/resources/triangle.svg" alt="">
+          <span>Треугольник</span>
+        </li>
+        <li class="option">
+          <input type="checkbox" name="" id="fill-color">
+          <label for="fill-color">Заливка</label>
+        </li>
+      </ul>
     </div>
+    <div class="row colors ">
+      <label class="title">Цвета</label>
+      <ul class="options">
+        <li class="option"></li>
+        <li class="option selected"></li>
+        <li class="option"></li>
+        <li class="option"></li>
+        <li class="option">
+          <input type="color" name="" id="color-picker">
+        </li>
+      </ul>
+    </div>
+    <div class="row ">
+      <label for="" class="title">Изменить размер</label>
+      <ul class="options">
+        <li class="option tool" id="zoomin">
+          <img src="/resources/zoom-in.png" alt="">
+          <span>Приблизить</span>
+        </li>
+        <li class="option tool" id="zoomout">
+          <img src="/resources/zoom-out.png" alt="">
+          <span>Отдалить</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2024 OransjeTegning</p>
-        </div>
-    </footer>
+  <div class="canvas-zone">
+    <div class="drawing-board">
+      <canvas></canvas>
+    </div>
+    <div class="action-buttons">
+      <button class="btn undo-board"><img src="/resources/undo.png" alt="Undo"></button>
+      <button class="btn redo-board"><img src="/resources/redo.png" alt="Redo"></button>
+      <button class="btn save-board"><img src="/resources/download.png" alt="Save"></button>
+      <button class="btn clear-board clean-col"><img src="/resources/close.png" alt="Clear"></button>
+    </div>
+    
+  </div>
+  </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+<footer>
+  &copy; 2024 OransjeTegning. All rights reserved.
+</footer>
 
 </body>
+<script src="/script.js"></script>
 </html>

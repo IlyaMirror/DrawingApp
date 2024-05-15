@@ -1,0 +1,229 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.drawing-board{
+  border: 3px solid #ffb89f;
+}
+
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #E0FFFF;
+  margin-bottom: 80px; /* Высота footer */
+}
+
+.main-container .row {
+  margin: 15px;
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+footer {
+  background-color: #FF7F50;
+  color: #FFFFFF;
+  padding: 10px 0;
+  text-align: center; /* Выравнивание текста по центру */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+
+.container {
+  height: 95%;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+  min-width: 98vw;
+}
+
+section {
+  background: #ff7542;
+  border-radius: 7px;
+}
+
+.tools-board {
+  width: 210px;
+  padding: 10px;
+  border: 3px solid #ffb89f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Используем space-between чтобы элементы равномерно распределялись */
+  align-items: center;
+}
+
+.row .options {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  text-align: center; /* Добавлено */
+  flex-grow: 1; /* Это заставит элементы .options занимать все доступное пространство внутри .tools-board */
+}
+
+.row .options .option {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.option:is(:hover, .active) img {
+  filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+
+.option :where(span, label) {
+  color: #000000;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.option:is(:hover, .active) :where(span, label) {
+  color: #4A98F7;
+}
+
+.option #fill-color {
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+}
+
+#fill-color:checked ~ label {
+  color: #4A98F7;
+}
+
+.option #size-slider {
+  width: 100%;
+  height: 5px;
+  margin-top: 10px;
+}
+
+.colors .options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.colors .option {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-top: 3px;
+  position: relative;
+}
+
+.colors .option:nth-child(1) {
+  background-color: #fff;
+  border: 1px solid #bfbfbf;
+  margin: 5px;
+}
+
+.colors .option:nth-child(2) {
+  background-color: #000;
+  margin: 5px;
+}
+
+.colors .option:nth-child(3) {
+  background-color: #E02020;
+  margin: 5px;
+}
+
+.colors .option:nth-child(4) {
+  background-color: #6DD400;
+  margin: 5px;
+}
+
+.colors .option:nth-child(5) {
+  background-color: #17a2b8;
+  margin: 5px;
+}
+
+.colors .option.selected::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  height: 12px;
+  width: 12px;
+  background: inherit;
+  border-radius: inherit;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+}
+
+.colors .option:first-child.selected::before {
+  border-color: #ccc;
+}
+
+.option #color-picker {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.buttons button {
+  width: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 11px 0;
+  font-size: 0.9rem;
+  margin-bottom: 13px;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttons .clear-canvas {
+  color: #ffb89f;
+  border: 3px solid #ffb89f;
+  transition: all 0.3s ease;
+}
+
+.clear-canvas:hover {
+  color: #fff;
+  border: 3px solid #fff;
+  background: #6C757D;
+}
+
+.buttons .save-img {
+  background: #17a2b8;
+  border: 1px solid #17a2b8;
+}
+
+.drawing-board {
+  flex: 1;
+  overflow: hidden;
+}
+
+.drawing-board canvas {
+  width: 100%;
+  height: 100%;
+}
